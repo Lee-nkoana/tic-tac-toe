@@ -19,7 +19,11 @@ const gameBoard = (() => {
       render();
     }
 
-  return{ render, update,}
+    const getGameBoard = () => {
+      return board;
+    }
+
+  return{ render, update, getGameBoard,}
 })();
 
 
@@ -40,20 +44,36 @@ const gameController = (() => {
   const start = () => {
     currentPlayerIndex = 0;
     gameOver = false;
+    for (let i = 0; i < 9; i++){
+      gameBoard.update(i,"");
+    }
     gameBoard.render();
+  }
+
+  const switchPlayer = () => {
+    currentPlayerIndex = currentPlayerIndex === 0 ? 1 : 0;
   }
 
   const handleclick = (event) => {
     let index = parseInt(event.target.id.split("-")[1]);
+
+    if (gameBoard.getGameBoard()[index] !== "") {
+      console.log("Cell is already filled.");
+      return;
+    }
+  
     gameBoard.update(index, players[currentPlayerIndex].mark);
 
-    currentPlayerIndex = (currentPlayerIndex + 1) % players.length;
+    console.log("Current player index:", currentPlayerIndex); 
+    switchPlayer();
   }
 
-  return{start, handleclick,}
+  return{start, handleclick, }
 })();
 
 const btnStart = document.querySelector("#btnStart");
 btnStart.addEventListener("click", () => {
   gameController.start();
 })
+
+gameController.start();
