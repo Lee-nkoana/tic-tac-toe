@@ -64,12 +64,37 @@ const gameController = (() => {
   
     gameBoard.update(index, players[currentPlayerIndex].mark);
 
-    console.log("Current player index:", currentPlayerIndex); 
+    if (checkForWin(gameBoard.getGameBoard(),players[currentPlayerIndex].mark)){
+      gameOver = true;
+      alert(`${players[currentPlayerIndex].name} won!`);
+    }
     switchPlayer();
   }
 
   return{start, handleclick, }
 })();
+
+function checkForWin(board, mark) {
+  const winningCombinations = [
+    [0, 1, 2],
+    [3, 4, 5],
+    [6, 7, 8],
+    [0, 3, 6],
+    [1, 4, 7],
+    [2, 5, 8],
+    [0, 4, 8],
+    [2, 4, 6]
+  ];
+
+  for (let i = 0; i < winningCombinations.length; i++) {
+    const [a, b, c] = winningCombinations[i];
+    if (board[a] === mark && board[a] === board[b] && board[a] === board[c]) {
+      return true; // Return true if a win is found
+    }
+  }
+
+  return false; // Return false if no win is found after checking all combinations
+}
 
 const btnStart = document.querySelector("#btnStart");
 btnStart.addEventListener("click", () => {
