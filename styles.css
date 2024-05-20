@@ -25,9 +25,10 @@ body, html{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
-    height: 70%;
-    width: 50%;
+    border: 1px solid black;
+    border-radius: 15px;
+    height: 80%;
+    width: 60%;
     margin: auto;
     background-color: #cbd5e1;
     padding: 10px;
@@ -55,4 +56,16 @@ body, html{
     justify-content: center;
     height: 80%;
     width: 70%;
+}
+
+.playerNames{
+    margin-top: 5px;
+}
+
+.msgPlayer{
+    display: flex;
+    justify-content: center;
+    color: #166534;
+    font-size: 1.5rem;
+    font-weight: bold;
 }
