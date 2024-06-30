@@ -69,3 +69,27 @@ body, html{
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+input{
+    border-radius: 15px;
+    padding: 5px;
+    border: 2px solid #312e81;
+    background-color: transparent;
+}
+
+#btnStart{
+    border-radius: 15px;
+    padding: 10px;
+    font-weight: bold;
+    background-color: #312e81;
+    color: #cbd5e1;
+    font-size: 1rem;
+}
+
+#btnStart:hover{
+    background-color: #cbd5e1;
+    color: #312e81;
+    border: 2px solid #312e81;
+    transition: all 200ms ease;
+    cursor: pointer;
+}
